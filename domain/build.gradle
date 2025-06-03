@@ -1,0 +1,8 @@
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-annotations'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.0.0'
+}
+
+bootJar {
+    enabled = false
+}

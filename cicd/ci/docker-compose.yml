@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  jenkins:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jenkins
+    ports:
+      - "8011:8080"
+      - "50001:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - ci-network
+    environment:
+      - JENKINS_OPTS=--httpPort=8080
+    restart: always
+
+  sonarqube:
+    image: sonarqube:lts
+    container_name: sonarqube
+    ports:
+      - "9001:9000"
+    networks:
+      - ci-network
+    environment:
+      - SONARQUBE_JDBC_URL=jdbc:postgresql://sonarqube-db:5432/sonar
+      - SONARQUBE_JDBC_USERNAME=sonar  # DB username
+      - SONARQUBE_JDBC_PASSWORD=sonar  # DB password
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+    restart: unless-stopped
+
+  sonarqube-db:
+    image: postgres:12
+    container_name: sonarqube-db
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORD=sonar
+      - POSTGRES_DB=sonar
+    volumes:
+      - sonarqube-db-data:/var/lib/postgresql/data
+    networks:
+      - ci-network
+    restart: always
+
+networks:
+  ci-network:
+    driver: bridge
+
+volumes:
+  jenkins_home:
+    driver: local
+  sonarqube_data:
+    driver: local
+  sonarqube_extensions:
+    driver: local
+  sonarqube_logs:
+    driver: local
+  sonarqube-db-data:
+    driver: local

@@ -1,0 +1,8 @@
+rootProject.name = 'exchangerates'
+include 'port'
+include 'domain'
+include 'rest'
+include 'app'
+include 'smoke-test'
+include 'smoke-test'
+

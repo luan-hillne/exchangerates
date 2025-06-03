@@ -1,0 +1,9 @@
+
+dependencies {
+    implementation 'org.springframework:spring-web'
+    implementation project(':domain')
+}
+
+bootJar {
+    enabled = false
+}

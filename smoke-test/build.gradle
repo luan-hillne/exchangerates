@@ -1,0 +1,12 @@
+dependencies {
+    implementation project(':app')
+    implementation project(':domain')
+    implementation project(':port')
+
+    testImplementation 'org.mockito:mockito-core:5.0.0'
+}
+
+
+bootJar {
+    enabled = false
+}
