@@ -8,7 +8,7 @@ image:
   repository: kodedge/exchangerates
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 0bfd31b
+  tag: e9d9501
 
 imagePullSecrets:
   - name: dockerhub-secret
