@@ -25,7 +25,7 @@ class ExchangeRatesServiceTest {
     @Test
     public void should_return_exchange_rate() {
         // Arrange
-        //Thread.sleep(1);
+        Thread.sleep(1);
 
         String baseCurrency = "USD";
         ExchangeRate expectedExchangeRate = getExchangeRate();
