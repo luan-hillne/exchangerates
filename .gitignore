@@ -36,3 +36,4 @@ out/
 ### VS Code ###
 .vscode/
 OpenJDK21U-jdk_x64_linux_hotspot_21.0.1_12.tar.gz
+cicd/ci/pass.txt
