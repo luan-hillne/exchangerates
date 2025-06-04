@@ -3,10 +3,10 @@ pipeline {
 
     environment {
         GITHUB_CREDENTIALS_ID = 'github-token'
-        REPO_URL = 'https://github.com/kodedge-swapneel/exchangerates.git'
+        REPO_URL = 'https://github.com/luan-hillne/exchangerates.git'
         SONAR_AUTH_TOKEN = credentials('sonarqube')
-        DOCKER_CREDENTIALS_ID = 'docker-hub-credentials'
-        IMAGE_NAME = 'kodedge/exchangerates'
+        DOCKER_CREDENTIALS_ID = 'docker-hub-cre'
+        IMAGE_NAME = 'luanhillne/kodegde'
 
         //following is not required. You can skip.
         GRADLE_HOME = '/opt/gradle'
